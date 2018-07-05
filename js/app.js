@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
     GameOfLife.prototype.setCellState = function(x, y, state) {
         if (state === "live") {
             this.coordinates(x, y).classList.add("live");
-        } else if (state === "dead") {
+        } else {
             this.coordinates(x, y).classList.remove("live");
         }
     };
@@ -59,47 +59,47 @@ document.addEventListener("DOMContentLoaded", function() {
         var aliveCounter = 0;
 
         if (x-1 >= 0 && y-1 >= 0) {
-            if (this.coordinates(x-1, y-1).className === 'live') { //1
+            if (this.coordinates(x-1, y-1).classList.contains('live')) { //1
                 aliveCounter++;
             }
         }
         if (y-1 >= 0) {
-            if (this.coordinates(x, y-1).className === 'live') { //2
+            if (this.coordinates(x, y-1).classList.contains('live')) { //2
                 aliveCounter++;
             }
         }
         if (x+1 < this.height && y-1 >= 0) {
-            if (this.coordinates(x+1, y-1).className === 'live') { //3
+            if (this.coordinates(x+1, y-1).classList.contains('live')) { //3
                 aliveCounter++;
             }
         }
         if (x-1 >= 0) {
-            if (this.coordinates(x-1, y).className === 'live') { //4
+            if (this.coordinates(x-1, y).classList.contains('live')) { //4
                 aliveCounter++;
             }
         }
         if (x+1 < this.height) {
-            if (this.coordinates(x+1, y).className === 'live') { //5
+            if (this.coordinates(x+1, y).classList.contains('live')) { //5
                 aliveCounter++;
             }
         }
         if (x-1 >= 0 && y+1 < this.width) {
-            if (this.coordinates(x-1, y+1).className === 'live') { //6
+            if (this.coordinates(x-1, y+1).classList.contains('live')) { //6
                 aliveCounter++;
             }
         }
         if (y+1 < this.width) {
-            if (this.coordinates(x, y+1).className === 'live') { //7
+            if (this.coordinates(x, y+1).classList.contains('live')) { //7
                 aliveCounter++;
             }
         }
         if (x+1 < this.height && y+1 < this.width) {
-            if (this.coordinates(x+1, y+1).className === 'live') { //8
+            if (this.coordinates(x+1, y+1).classList.contains('live')) { //8
                 aliveCounter++;
             }
         }
 
-        if (this.coordinates(x, y).className === 'live') {
+        if (this.coordinates(x, y).classList.contains('live')) {
             if (aliveCounter < 2 || aliveCounter > 3) {
                 return 0;
             }
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 return 1;
             }
         }
-        if (this.coordinates(x, y).className !== 'live') {
+        if (this.coordinates(x, y).classList.contains('live')) {
             if (aliveCounter === 3) {
                 return 1;
             }
